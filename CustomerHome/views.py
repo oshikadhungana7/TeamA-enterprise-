@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 from CustomerHome.models import Customer
+from Owner.models import Owner
+from Manager.models import Manager
 
 
 from datetime import datetime
@@ -17,14 +19,25 @@ def index(request):
 
     if('user_email' in request.session):
         email = request.session.get('user_email')
+        
 
         result_customer = Customer.objects.filter(customer_email=email)
-     
+        result_owner = Owner.objects.filter(Owner_email=email)
+        result_manager = Manager.objects.filter(Manager_email=email)
 
         if result_customer.exists():
             request.session['user_email'] = email
             isLogin = True
             return redirect('/Home/')
+        elif result_owner.exists():
+            request.session['user_email'] = email
+            isLogin = True
+            return redirect('/Owner/')
+        elif result_manager.exists():
+            request.session['user_email'] = email
+            isLogin = True
+            return redirect('/Manager/')
+        return redirect('/Home/')
         
 
    
@@ -35,6 +48,7 @@ def signin(request):
 def register(request):
     return render(request,'register.html')
 
+
 def LoginAuthentication(request):
     global isLogin
     login_email=request.POST.get('login_email','')
@@ -42,13 +56,21 @@ def LoginAuthentication(request):
     # customer = Customer.objects.all()
 
     result_customer = Customer.objects.filter(customer_email=login_email,customer_password=login_password)
-   
+    result_owner = Owner.objects.filter(Owner_email=login_email,Owner_password=login_password)
+    result_manager = Manager.objects.filter(Manager_email=login_email,Manager_password=login_password)
 
     if result_customer.exists():
         request.session['user_email'] = login_email
         isLogin = True
         return redirect('/Home/')
-    
+    elif result_owner.exists():
+        request.session['user_email'] = login_email
+        isLogin = True
+        return redirect('/Owner/')
+    elif result_manager.exists():
+        request.session['user_email'] = login_email
+        isLogin = True
+        return redirect('/Manager/')
     else:
         Message = "Invalid Email or password!!"
         return render(request,'SignIn.html',{'Message':Message})
@@ -72,8 +94,7 @@ def RegisterCustomer(request):
 
     result_customer = Customer.objects.filter(customer_email=customer_email)
     
-
-    if result_customer.exists() :
+    if result_customer.exists() or result_owner.exists() or result_manager.exists():
         Message = "This Email address already exist!!"
         return render(request,'register.html',{'Message':Message})
     else:
@@ -94,6 +115,9 @@ def Logout(request):
     isLogout = True
     Message = "Successfully Logged Out!!"
     return redirect('/')
+
+
+
 
 
 

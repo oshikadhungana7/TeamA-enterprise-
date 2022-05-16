@@ -24,21 +24,22 @@ body {
   margin: 0 10px;
   }
 .navbar-nav > li:hover{
-    background: hsla(51, 89%, 61%, 1);
+    background: hsla(197, 14%, 57%, 1);
 
-background: linear-gradient(90deg, hsla(51, 89%, 61%, 1) 13%, hsla(25, 83%, 57%, 1) 100%);
-
-background: -moz-linear-gradient(90deg, hsla(51, 89%, 61%, 1) 13%, hsla(25, 83%, 57%, 1) 100%);
-
-background: -webkit-linear-gradient(90deg, hsla(51, 89%, 61%, 1) 13%, hsla(25, 83%, 57%, 1) 100%);
-
-filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#F4D941", endColorstr="#EC8235", GradientType=1 );
+    background: linear-gradient(90deg, hsla(197, 14%, 57%, 1) 50%, hsla(192, 17%, 94%, 1) 100%);
+    
+    background: -moz-linear-gradient(90deg, hsla(197, 14%, 57%, 1) 50%, hsla(192, 17%, 94%, 1) 100%);
+    
+    background: -webkit-linear-gradient(90deg, hsla(197, 14%, 57%, 1) 50%, hsla(192, 17%, 94%, 1) 100%);
+    
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8399A2", endColorstr="#EEF2F3", GradientType=1 );
 }
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
+
 
 body{
     font-family: sans-serif;
