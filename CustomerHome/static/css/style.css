@@ -4,8 +4,13 @@ body {
   }
 .carousel-item {
     height: 25rem;
-    background: #000;
+    background:white;
+    position:relative;
+    top: 60px;
     
+    
+    padding-left: 83px;
+   padding-right: 83px;
 }
 
 .carousel-item img {
@@ -39,7 +44,6 @@ body {
     padding: 0;
     box-sizing: border-box;
 }
-
 
 body{
     font-family: sans-serif;
@@ -79,4 +83,3 @@ p{
     font-size: 14px;
     color: #cacdd2;
 }
-
