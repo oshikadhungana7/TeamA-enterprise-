@@ -1,8 +1,16 @@
 {% load static %}
 <!doctype html>
 <html lang="en">
-
 <head>
+    
+   
+
+    <!-- custom css file link  -->
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}" /> -->
+    <link rel="stylesheet" href="/static/css/register.css">
+    <!-- custom js file link  -->
+    <script src="{% static 'js/script.js' %}" defer></script>
+
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -27,7 +35,7 @@
 
       
 
-    <h1 class="display-3" style="text-align: center;">Register</h1>
+    <h1 class="display-3" style="text-align: center;">Registration</h1>
 
     {%if Message%}
     <div class="container">
@@ -121,7 +129,7 @@
         </form>
         <div class="dropdown-divider"></div>
         <div class="px-4 mb-3">
-            Already have account? <a href="/signin">Login</a>
+            Already have account? <a href="{% url 'SignIn' %}">Login</a>
         </div>
     </div>
 
