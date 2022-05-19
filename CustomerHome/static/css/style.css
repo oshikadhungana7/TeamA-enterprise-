@@ -4,8 +4,13 @@ body {
   }
 .carousel-item {
     height: 25rem;
-    background: #000;
+    background:white;
+    position:relative;
+    top: 60px;
     
+    
+    padding-left: 83px;
+   padding-right: 83px;
 }
 
 .carousel-item img {
@@ -24,27 +29,15 @@ body {
   margin: 0 10px;
   }
 .navbar-nav > li:hover{
-    
     background: hsla(197, 14%, 57%, 1);
 
-
-
     background: linear-gradient(90deg, hsla(197, 14%, 57%, 1) 50%, hsla(192, 17%, 94%, 1) 100%);
-
-   
-
+    
     background: -moz-linear-gradient(90deg, hsla(197, 14%, 57%, 1) 50%, hsla(192, 17%, 94%, 1) 100%);
-
-   
-
+    
     background: -webkit-linear-gradient(90deg, hsla(197, 14%, 57%, 1) 50%, hsla(192, 17%, 94%, 1) 100%);
-
-   
-
+    
     filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#8399A2", endColorstr="#EEF2F3", GradientType=1 );
-   
-
-
 }
 *{
     margin: 0;
@@ -90,4 +83,3 @@ p{
     font-size: 14px;
     color: #cacdd2;
 }
-

@@ -8,7 +8,7 @@
   text-decoration: none;
   outline: none;
   border: none;
-  text-transform: capitalize;
+  /* text-transform: capitalize; */
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
 }
@@ -306,6 +306,7 @@ section {
   -ms-grid-columns: (minmax(31rem, 1fr)) [auto-fit];
   grid-template-columns: repeat(auto-fit, minmax(31rem, 1fr));
   gap: 1.5rem;
+  
 }
 
 .banner .box {
@@ -666,7 +667,7 @@ section {
 .login-form form h3,
 .register-form form h3 {
   font-size: 2.2rem;
-  text-transform: uppercase;
+  /* text-transform: uppercase; */
   color: #333;
   margin-bottom: 0.7rem;
 }
