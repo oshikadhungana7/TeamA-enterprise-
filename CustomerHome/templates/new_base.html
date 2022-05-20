@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap 5 - Transparent Navbar</title>
+    <link rel="stylesheet" href="/CustomerHome/static/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/CustomerHome/static/css/style.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+      body {
+        line-height: 1.5;
+        font-family: "Poppins", sans-serif;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        max-width: 1170px;
+        margin: auto;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      ul {
+        list-style: none;
+      }
+      .footer {
+        background-color: #24262b;
+        padding: 70px 0;
+      }
+      .footer-col {
+        width: 25%;
+        padding: 0 15px;
+      }
+      .footer-col h4 {
+        font-size: 18px;
+        color: #ffffff;
+        text-transform: capitalize;
+        margin-bottom: 35px;
+        font-weight: 500;
+        position: relative;
+      }
+      .footer-col h4::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        background-color: #e91e63;
+        height: 2px;
+        box-sizing: border-box;
+        width: 50px;
+      }
+      .footer-col ul li:not(:last-child) {
+        margin-bottom: 10px;
+      }
+      .footer-col ul li a {
+        font-size: 16px;
+        text-transform: capitalize;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 300;
+        color: #bbbbbb;
+        display: block;
+        transition: all 0.3s ease;
+      }
+      .footer-col ul li a:hover {
+        color: #ffffff;
+        padding-left: 8px;
+      }
+      .footer-col .social-links a {
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        background-color: rgba(255, 255, 255, 0.2);
+        margin: 0 10px 10px 0;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 50%;
+        color: #ffffff;
+        transition: all 0.5s ease;
+      }
+      .footer-col .social-links a:hover {
+        color: #24262b;
+        background-color: #ffffff;
+      }
+
+      /*responsive*/
+      @media (max-width: 767px) {
+        .footer-col {
+          width: 50%;
+          margin-bottom: 30px;
+        }
+      }
+      @media (max-width: 574px) {
+        .footer-col {
+          width: 100%;
+        }
+      }
+
+      .html {
+        font-family: "Courier New", Courier, monospace;
+      }
+      .banner-image {
+        background-image: url("/CustomerHome/static/img/bg_image.jpg");
+        background-size: cover;
+      }
+      a.navbar-brand {
+        padding: 0px;
+        font-size: 40px;
+        font-family: "Grape Nuts", cursive;
+      }
+      a.nav-link {
+        font-size: 1.2rem;
+      }
+      li.nav-item {
+        margin-right: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navbar  -->
+    <nav class="navbar fixed-top navbar-expand-lg navbar-dark p-md-3">
+      <div class="container">
+        <a class="navbar-brand" href="#">
+          <!-- <img
+            alt="Qries"
+            src="https://www.qries.com/images/banner_logo.png"
+            width="100"
+            height="50"
+        /> -->
+          CarKhaani
+        </a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-bs-toggle="collapse"
+          data-bs-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <div class="mx-auto"></div>
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Blog</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Vehicles</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="#">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Banner Image  -->
+    <div
+      class="banner-image w-100 vh-100 d-flex justify-content-center align-items-center"
+    ></div>
+
+    <!-- Main Content Area -->
+    <div class="container my-5 d-grid gap-5">
+      <div class="p-5 border">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Necessitatibus veniam ipsa earum quibusdam, atque ipsum error maiores
+          natus iusto fugit id saepe neque rerum magni laudantium accusantium
+          dolorem numquam quasi.
+        </p>
+      </div>
+      <div class="p-5 border">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Necessitatibus veniam ipsa earum quibusdam, atque ipsum error maiores
+          natus iusto fugit id saepe neque rerum magni laudantium accusantium
+          dolorem numquam quasi.
+        </p>
+      </div>
+      <div class="p-5 border">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Necessitatibus veniam ipsa earum quibusdam, atque ipsum error maiores
+          natus iusto fugit id saepe neque rerum magni laudantium accusantium
+          dolorem numquam quasi.
+        </p>
+      </div>
+      <div class="p-5 border">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Necessitatibus veniam ipsa earum quibusdam, atque ipsum error maiores
+          natus iusto fugit id saepe neque rerum magni laudantium accusantium
+          dolorem numquam quasi.
+        </p>
+      </div>
+      <div class="p-5 border">
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+          Necessitatibus veniam ipsa earum quibusdam, atque ipsum error maiores
+          natus iusto fugit id saepe neque rerum magni laudantium accusantium
+          dolorem numquam quasi. df
+        </p>
+      </div>
+    </div>
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col">
+            <h4>company</h4>
+            <ul>
+              <li><a href="#">about us</a></li>
+              <li><a href="#">our services</a></li>
+              <li><a href="#">privacy policy</a></li>
+              <li><a href="#">affiliate program</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>get help</h4>
+            <ul>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">shipping</a></li>
+              <li><a href="#">returns</a></li>
+              <li><a href="#">order status</a></li>
+              <li><a href="#">payment options</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>HEHEHE</h4>
+            <ul>
+              <li><a href="#">Oshika</a></li>
+              <li><a href="#">Subham</a></li>
+              <li><a href="#">Another_Subham</a></li>
+              <li><a href="#">Rajal</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>follow us</h4>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="/static/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+      var nav = document.querySelector("nav");
+
+      window.addEventListener("scroll", function () {
+        if (window.pageYOffset > 100) {
+          nav.classList.add("bg-info", "shadow");
+        } else {
+          nav.classList.remove("bg-info", "shadow");
+        }
+      });
+    </script>
+  </body>
+</html>
