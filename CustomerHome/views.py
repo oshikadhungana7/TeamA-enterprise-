@@ -1,13 +1,16 @@
+from urllib import request
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import TemplateView
 from CustomerHome.models import Customer
 from Owner.models import Owner
 from Manager.models import Manager
+from vehicle.models import Vehicle
 
 
 from datetime import datetime
 from datetime import date
+from django.core.paginator import Paginator
 
 isLogin = False
 isLogout = False
@@ -38,16 +41,20 @@ def index(request):
             isLogin = True
             return redirect('/Manager/')
         return redirect('/Home/')
-        
 
-   
+    vehicle = Vehicle.objects.all()
+    if('user_email' not in request.session and isLogout):
+        isLogin = False
+        isLogout = False
+        Message = "Successfully Logged Out!!"
+        return render(request,'index.html',{'Message':Message,'vehicle':vehicle})
+    return render(request,'index.html',{'vehicle':vehicle})
 
 def signin(request):
     return render(request,'SignIn.html')
 
 def register(request):
     return render(request,'register.html')
-
 
 def LoginAuthentication(request):
     global isLogin
@@ -93,7 +100,9 @@ def RegisterCustomer(request):
     customer_license=request.FILES['customer_license']
 
     result_customer = Customer.objects.filter(customer_email=customer_email)
-    
+    result_owner = Owner.objects.filter(Owner_email=customer_email)
+    result_manager = Manager.objects.filter(Manager_email=customer_email)
+
     if result_customer.exists() or result_owner.exists() or result_manager.exists():
         Message = "This Email address already exist!!"
         return render(request,'register.html',{'Message':Message})
@@ -116,10 +125,18 @@ def Logout(request):
     Message = "Successfully Logged Out!!"
     return redirect('/')
 
+def Home(request):
+    if('user_email' not in request.session):
+        return redirect('/signin/')
+    customer_email = request.session.get('user_email')
+    customer = Customer.objects.get(customer_email=customer_email)
+    vehicle = Vehicle.objects.all()
+    Message="Welcome Aboard!!"
+    return render(request,'Home.html',{'vehicle':vehicle,'Message':Message,'customer':customer})
 
-
-
-
-
-
-   
+def Profile(request):
+    if('user_email' not in request.session):
+        return redirect('/signin/')
+    customer_email = request.session.get('user_email')
+    customer = Customer.objects.get(customer_email=customer_email)
+    return render(request,'Profile.html',{'customer':customer})

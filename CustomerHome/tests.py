@@ -29,3 +29,8 @@ class TestUrls(SimpleTestCase):
         url=reverse("Logout")
 
         self.assertEquals(resolve(url).func,Logout)
+    def test_LoginAuthentication_url(self):
+
+        url=reverse("LoginAuthentication")
+
+        self.assertEquals(resolve(url).func,LoginAuthentication)

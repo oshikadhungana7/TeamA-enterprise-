@@ -38,6 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'CustomerHome',
+    'Manager',
+    'Owner',
+    'vehicle',
 ]
 
 MIDDLEWARE = [
@@ -78,11 +81,11 @@ WSGI_APPLICATION = 'teamA.wsgi.application'
 DATABASES = {
      'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'carrent',
+        'NAME': 'vrent',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
-        'PORT': '3308',
+        'PORT': '3306',
     }
 }
 

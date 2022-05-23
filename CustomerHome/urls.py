@@ -1,29 +1,23 @@
 from django.urls import path
 from . import views
-
+# from django.conf.urls import url
 from django.conf import settings
 from django.conf.urls.static import static
 from django.conf.urls import include
 
-import CustomerHome
-
 urlpatterns = [
-     
-  
-    
-   
-   
-  
+    path('', views.index, name="Home"),
+    path('Home/', views.Home, name="LoggedinHome"),
     path('signin/',views.signin,name="SignIn"),
-
-    
     path('Logout/',views.Logout,name="Logout"),    
     path('register/',views.register,name="Register"),
-    
-    
-    
+    path('Profile/',views.Profile,name="Profile"),
+   
     path('LoginAuthentication/',views.LoginAuthentication,name="LoginAuthentication"),
     path('RegisterCustomer/',views.RegisterCustomer,name="RegisterCustomer"),
+  
+    path('Owner/',include("Owner.urls")),
+    path('Manager/',include("Manager.urls"))
 ]
 
 if settings.DEBUG:
