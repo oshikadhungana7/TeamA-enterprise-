@@ -4,6 +4,7 @@ from django.views.generic import TemplateView
 from CustomerHome.models import Customer
 from Owner.models import Owner
 from Manager.models import Manager
+from vehicle.models import Vehicle
 
 
 from datetime import datetime
@@ -38,6 +39,13 @@ def index(request):
             isLogin = True
             return redirect('/Manager/')
         return redirect('/Home/')
+        vehicle = Vehicle.objects.all()
+    if('user_email' not in request.session and isLogout):
+        isLogin = False
+        isLogout = False
+        Message = "Successfully Logged Out!!"
+        return render(request,'index.html',{'Message':Message,'vehicle':Vehicle})
+    return render(request,'index.html',{'vehicle':Vehicle})
         
 
    
@@ -94,7 +102,7 @@ def RegisterCustomer(request):
 
     result_customer = Customer.objects.filter(customer_email=customer_email)
     
-    if result_customer.exists() or result_owner.exists() or result_manager.exists():
+    if result_customer.exists() :
         Message = "This Email address already exist!!"
         return render(request,'register.html',{'Message':Message})
     else:
@@ -110,11 +118,20 @@ def RegisterCustomer(request):
         return redirect('/Home/')
 
 def Logout(request):
-    global isLogout
-    del request.session['user_email']
-    isLogout = True
-    Message = "Successfully Logged Out!!"
-    return redirect('/')
+    try:
+        if request.method == 'GET':
+            del request.session['email']
+            return redirect('SignIn')
+    except KeyError:
+        return redirect('SignIn')     
+def Home(request):
+    if('user_email' not in request.session):
+        return redirect('/signin/')
+    customer_email = request.session.get('user_email')
+    customer = Customer.objects.get(customer_email=customer_email)
+    
+    Message="Welcome Aboard!!"
+    return render(request,'Home.html',)
 
 
 

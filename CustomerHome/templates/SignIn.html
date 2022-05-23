@@ -24,7 +24,7 @@
     <!-- header section starts  -->
 
     <header class="header">
-      <a href="home.html" class="logo"> # </a>
+      <a href="index.html" class="logo"> # </a>
     </header>
 
     <!-- header section ends -->
@@ -34,28 +34,16 @@
     <section class="login-form">
       <form action="/LoginAuthentication/" class="px-4 py-3" method="POST">
         {%csrf_token%}
-        <h3>user login</h3>
-        <div class="inputBox">
-          <span class="fas fa-user"></span>
-          <input type="email" name="" placeholder="Email" id="" />
+        <div class="form-group">
+            <label for="exampleDropdownFormEmail1"><b>Email address</b></label>
+            <input type="email" class="form-control" name="login_email" id="exampleDropdownFormEmail1" placeholder="email@example.com" autocomplete="off" required style="width: 450px ;">
         </div>
-        <div class="inputBox">
-          <span class="fas fa-lock"></span>
-          <input
-            type="password"
-            name=""
-            placeholder="Password"
-            id=""
-          />
+        <div class="form-group">
+            <label for="exampleDropdownFormPassword1"><b>Password</b></label>
+            <input type="password" class="form-control" name="login_password" id="exampleDropdownFormPassword1" placeholder="Password" required style="width: 450px;">
         </div>
-        <input type="submit" value="sign in" class="btn" />
-        <div class="flex">
-          <input type="checkbox" name="" id="remember-me" />
-          <label for="remember-me">remember me</label>
-        </div>
-        <b> <p>Don't have an account?</p></b>
-        <a href="{% url 'Register' %}" class="btn">create an account</a>
-      </form>
+        <input type="submit" class="btn btn-primary" value="Login" name="Login" />
+    </form>
     </section>
 
     <!-- login form section ends -->

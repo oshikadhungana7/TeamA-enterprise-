@@ -11,10 +11,13 @@ urlpatterns = [
      
   
     
-   
+   path('', views.index, name="Home"),
    
   
     path('signin/',views.signin,name="SignIn"),
+    path('Home/', views.Home, name="LoggedinHome"),
+    path('Manager/',include("Manager.urls")),
+    path('Owner/',include("Owner.urls")),
 
     
     path('Logout/',views.Logout,name="Logout"),    
