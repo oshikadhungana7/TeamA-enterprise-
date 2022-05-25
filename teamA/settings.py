@@ -58,7 +58,7 @@ ROOT_URLCONF = 'teamA.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,'templates'), os.path.join(BASE_DIR,'static')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), os.path.join(BASE_DIR, 'static')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -79,13 +79,13 @@ WSGI_APPLICATION = 'teamA.wsgi.application'
 
 
 DATABASES = {
-     'default': {
+    'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'vrent',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': '127.0.0.1',
-        'PORT': '3306',
+        'PORT': '3307',
     }
 }
 
@@ -128,5 +128,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # For uploading images
-MEDIA_ROOT = os.path.join(BASE_DIR,'media/')
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 MEDIA_URL = '/media/'
