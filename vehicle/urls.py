@@ -5,7 +5,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    
+    path('UploadVehicle/', views.upload_vehicle,name="UploadVehicle"),
     path('Owner/',include("Owner.urls")),
     path('Manager/',include("Manager.urls"))
 ]

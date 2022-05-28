@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Manager',
     'Owner',
     'vehicle',
+    'RentVehicle'
 ]
 
 MIDDLEWARE = [
