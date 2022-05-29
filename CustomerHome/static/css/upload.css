@@ -1,0 +1,96 @@
+
+
+ .container.centered{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+	
+ }
+
+ .container form{
+	background: #545871;
+	padding: 25px;
+	border-radius: 5px;
+	width: 400px;
+	margin:0 auto;
+	background: #84889c;
+ }
+ .form_wrap .form-group{
+	margin-bottom: 15px;
+}
+
+.container form .form-group:last-child{
+	margin-bottom: 0;
+}
+
+.container form .form-group label{
+	display: block;
+	margin-bottom: 3px;
+	color: #dadbe5;
+}
+.container form label{
+	display: block;
+	margin-bottom: 3px;
+	color: #dadbe5;
+}
+
+
+
+.container form  .form-control, .custom-file-input{
+	width: 100%;
+	border-radius: 3px;
+	border: 1px solid #9597a6;
+	padding: 10px;
+	outline: none;
+}
+
+.container form  .form-control, .custom-file-input:focus{
+	border-color: #87CEEB;
+}
+
+.container form .btn{
+	width: 100%;
+	background: #87CEEB;
+	padding: 10px;
+	border: 0;
+	border-radius: 3px;
+	text-transform: uppercase;
+	letter-spacing: 3px;
+	cursor: pointer;
+}
+
+.container form .btn:hover{
+	background: #87CEEB;
+}
+
+.container form .form-row{
+	background: #fff;
+	padding: 8px 10px;
+	border-radius: 3px;
+	display: flex;
+	justify-content: center;
+}
+.container form .form-row .form-check:first-child{
+	margin-right: 15px;
+}
+
+.container form .form-row .form-check-input{
+	position: absolute;
+	top: 0;
+	right: 0;
+	opacity: 0;
+}
+
+.container form .form-row .form-check .form-check-label{
+	display: inline-block;
+	font-size: 14px;
+	padding: 3px 20px;
+	border-radius: 3px;
+	color: #545871;
+}
+.container form .form-check-input:checked ~ .form-check-label{
+	background: #87CEEB;
+}
+
+ 

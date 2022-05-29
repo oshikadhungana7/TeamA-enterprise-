@@ -249,22 +249,60 @@
                         </a>
                     </div>
                     <div class="card-body">
-                        <h5 class="card-title p-1" style="background-color: #b4ceeb; text-align: center;">Check Availability
-                        </h5>
-                        <form action="{% url 'CheckAvailability' vehicle.Vehicle_license_plate %}" class="px-4 py-3" method="post" enctype="multipart/form-data">
-                            {% csrf_token %}
-                            <div class="form-row">
-                                <div class="col-4">
-                                    <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="RentVehicle_Date_of_Booking" class="form-control" placeholder="Pickup date" required>
-                                </div>
-                                <div class="col-4">
-                                    <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="RentVehicle_Date_of_Return" class="form-control" placeholder="Return date" required>
-                                </div>
-                                <div class="col-4">
-                                    <input type="submit" class="btn btn-success" value="Check Availability" />
-                                </div>
-                            </div>
-                        </form>
+
+                      {%if Incorrect_dates%}
+                      <div class="container">
+                          <div class="alert alert-danger alert-dismissible fade show my-2" role="alert">
+                              <strong>{{Incorrect_dates}}</strong>
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                      </div>
+                      {%endif%} {%if Available%}
+                      <div class="container">
+                          <div class="alert alert-success alert-dismissible fade show my-2" role="alert">
+                              <strong>Vehicle is Available (Send Request to book it)</strong> {%if Message%}
+                              <p>
+                                  {{Message}}. So there are some chances that you might not get it. As vehicles are rented on First come first serve policy. You may get this vehicle if the other person decline his/her request.
+                              </p>
+                              {%endif%}
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                      </div>
+                      {%endif%} {%if NotAvailable%}
+                      <div class="container">
+                          <div class="alert alert-danger alert-dismissible fade show my-2" role="alert">
+                              <strong>Vehicle is not Available for this dates!!</strong>
+                              <p>
+                                  It is rented from {{dates.RentVehicle_Date_of_Booking}} to {{dates.RentVehicle_Date_of_Return}}
+                              </p>
+                              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                  <span aria-hidden="true">&times;</span>
+                              </button>
+                          </div>
+                      </div>
+                      {%endif%}
+
+                      <h5 class="card-title p-1" style="background-color: yellow; text-align: center;">Check Availability
+                      </h5>
+                      <form action="{% url 'CheckAvailability' vehicle.Vehicle_license_plate %}" class="px-4 py-3" method="post" enctype="multipart/form-data">
+                          {% csrf_token %}
+                          <div class="form-row">
+                              <div class="col-4">
+                                  <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="RentVehicle_Date_of_Booking" class="form-control" placeholder="Pickup date" required>
+                              </div>
+                              <div class="col-4">
+                                  <input type="text" onfocus="(this.type='date')" onblur="(this.type='text')" name="RentVehicle_Date_of_Return" class="form-control" placeholder="Return date" required>
+                              </div>
+                              <div class="col-4">
+                                  <input type="submit" class="btn btn-success" value="Check Availability" />
+                              </div>
+                          </div>
+                      </form>
+
                         {%if Available%}
                         <h5 class="card-title p-1" style="background-color: yellow; text-align: center;">Send Rent Request to Owner
                         </h5>
@@ -304,7 +342,7 @@
                     <div class="card-body" style="border:2px solid black ;">
                 <div class="card p-2" style="width: auto;">
                     <div class="card-body" style="border:2px solid black ;">
-                        <div class="row"style="border:2px solid black ;">
+                        <div class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Name</h6>
                             </div>
@@ -313,7 +351,7 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="row"style="border:2px solid black ;">
+                        <div class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Company</h6>
                             </div>
@@ -322,7 +360,7 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="row"style="border:2px solid black ;">
+                        <div class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Model</h6>
                             </div>
@@ -331,7 +369,7 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="row"style="border:2px solid black ;">
+                        <div class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Fuel Type</h6>
                             </div>
@@ -340,7 +378,7 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="row"style="border:2px solid black ;">
+                        <div class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Seats</h6>
                             </div>
@@ -349,7 +387,7 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="row"style="border:2px solid black ;">
+                        <div class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Gear Type</h6>
                             </div>
@@ -358,7 +396,7 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="row"style="border:2px solid black ;">
+                        <div class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">About</h6>
                             </div>
@@ -367,7 +405,7 @@
                             </div>
                         </div>
                         <hr>
-                        <div class="row"style="border:2px solid black ;">
+                        <div class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">Price</h6>
                             </div>

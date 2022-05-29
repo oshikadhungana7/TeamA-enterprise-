@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bootstrap 5 - Transparent Navbar</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style2.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}"> -->
     <link
       rel="stylesheet"
       type="text/css"
@@ -187,7 +188,7 @@
               </ul>
               <ul class="navbar-nav justify-content-end">
                 <li class="nav-item">
-                    <a class="nav-link" href="/profile" style="color: #f1f1f1;" title="Your Profile">
+                    <a class="nav-link" href="/Profile"style="color: #f1f1f1;" title="Your Profile">
                       Hello! {% block name %}{{customer.customer_firstname}} {%endblock%}</a>
                 </li>
             </ul>

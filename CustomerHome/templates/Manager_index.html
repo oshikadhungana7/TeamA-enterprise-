@@ -155,7 +155,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="/Owner" style="color: #f1f1f1;">Home</a>
+                    <a class="nav-link" href="/Manager" style="color: #f1f1f1;">Home</a>
                 </li>
 
                 <li class="nav-item dropdown">
@@ -163,7 +163,7 @@
                         Your Rentals
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/Owner/SentRequests">Sent Requests</a>
+                        <a class="dropdown-item" href="/Manager/SentRequests">Sent Requests</a>
                         <a class="dropdown-item" href="#">Previous Rentals</a>
                     </div>
                 </li>
@@ -173,9 +173,9 @@
                         Customer's Rentals <span class="badge badge-warning">{{no_of_pending_request}}</span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/Owner/RentRequest">Rent Requests <span class="badge badge-warning mx-2">{{no_of_pending_request}}</span></a>
+                        <a class="dropdown-item" href="/Manager/RentRequest">Rent Requests <span class="badge badge-warning mx-2">{{no_of_pending_request}}</span></a>
                         <a class="dropdown-item" href="#">Rental History</a>
-                        <a class="dropdown-item" href="/Owner/AllCustomers">View All Customers</a>
+                        <a class="dropdown-item" href="/Manager/AllCustomers">View All Customers</a>
                     </div>
                 </li>
 
@@ -186,8 +186,8 @@
                         Vehicles
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="/Owner/UploadVehicle">Upload Vehicle</a>
-                        <a class="dropdown-item" href="/Owner/AllVehicles">View All Vehicles</a>
+                        <a class="dropdown-item" href="/Manager/UploadVehicle">Upload Vehicle</a>
+                        <a class="dropdown-item" href="/Manager/AllVehicles">View All Vehicles</a>
                     </div>
                 </li>
 
@@ -196,7 +196,7 @@
             <ul class="navbar-nav justify-content-end">
                 <li class="nav-item">
                     <a class="nav-link" href="/Manager/profile" style="color: #f1f1f1;" title="Your Profile">
-                        Hello! {{manager.Manager_firstname}}{%endblock%}</a>
+                        Hello! {{manager.Manager_firstname}}</a>
                 </li>
             </ul>
 
