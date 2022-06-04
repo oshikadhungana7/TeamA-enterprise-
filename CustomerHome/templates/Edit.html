@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>update profile</title>
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="Edit.css">
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+   <script src="edit.js"></script>
+<div class="update-profile">
+
+   <form action="" method="post">
+      <img class="profile-pic" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg">
+      <div class="p-image">
+         <i class="fa fa-camera upload-button"></i>
+          <input class="file-upload" type="file" accept="image/*"/>
+       </div>
+      <div class="flex">
+       
+         <div class="inputBox">
+            <span>Username :</span>
+            <input type="text" name="update_name" placeholder="Name" class="box">
+            <span>Your email :</span>
+            <input type="email" name="update_email" placeholder="Email" class="box">
+            <span>Phone Number :</span>
+            <input type="text" name="update_phone" placeholder="Phone number" class="box">
+            <span>Update your license pic :</span>
+            <input type="file" name="update_image" accept="image/jpg, image/jpeg, image/png" class="box">
+         </div>
+         <div class="inputBox">
+            
+                 
+
+            
+            <input type="hidden" name="old_pass" value="Password">
+            <span>Old password :</span>
+            <input type="password" name="update_pass" placeholder="Enter previous password" class="box">
+            <span>New password :</span>
+            <input type="password" name="new_pass" placeholder="Enter new password" class="box">
+            <span>Confirm password :</span>
+            <input type="password" name="confirm_pass" placeholder="Confirm new password" class="box">
+         </div>
+      </div>
+      <input type="submit" value="Update profile" name="update_profile" class="btn">
+      <a href="#" class="delete-btn">Go back</a>
+   </form>
+
+</div>
+
+</body>
+</html>
