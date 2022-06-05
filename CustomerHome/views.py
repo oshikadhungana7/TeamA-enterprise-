@@ -7,7 +7,6 @@ from Owner.models import Owner
 from Manager.models import Manager
 from vehicle.models import Vehicle
 from RentVehicle.models import RentVehicle
-import json
 
 from datetime import datetime
 from datetime import date
@@ -144,7 +143,6 @@ def Profile(request):
 
 def showdetails(request,Vehicle_license_plate):
     vehicle = Vehicle.objects.get(Vehicle_license_plate=Vehicle_license_plate)
-    
     if('user_email' not in request.session):
         return render(request,'showdetails_not_login.html',{'vehicle':vehicle})
     else:
@@ -214,5 +212,9 @@ def SentRequests(request):
     else:
         Message = "You haven't rented any vehicle yet!!"
         return render(request,'SentRequests.html',{'customer':customer,'rentvehicle':rentvehicle,'Message':Message})
+
+
+    
+
 
 

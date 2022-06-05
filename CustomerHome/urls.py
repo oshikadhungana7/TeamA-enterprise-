@@ -13,6 +13,7 @@ urlpatterns = [
     path('register/',views.register,name="Register"),
     path('Profile/',views.Profile,name="Profile"),
    
+    
     path('LoginAuthentication/',views.LoginAuthentication,name="LoginAuthentication"),
     path('RegisterCustomer/',views.RegisterCustomer,name="RegisterCustomer"),
     path('VehicleDetails/<str:Vehicle_license_plate>/',views.showdetails,name="VehicleDetails"),

@@ -6,9 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bootstrap 5 - Transparent Navbar</title>
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/upload.css' %}">
-    <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
-    <link rel="stylesheet" href="{% static 'css/style2.css' %}"> -->
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}">
     <link
       rel="stylesheet"
       type="text/css"
@@ -221,121 +219,165 @@
     <div
     class="banner-image w-100 vh-100 d-flex justify-content-center align-items-center"
     ></div>
-</head>
 
 <body>
-    <!-- {% block name %}{{owner.Owner_firstname}}{%endblock%} {% block pagecontent %} -->
-    <h1 class="display-4" style="text-align: center;">Upload Vehicle</h1>
+    {% block name %}{{owner.Owner_firstname}}{%endblock%}{% block pagecontent %}
+    <h1 class="display-3" style="text-align: center;">Rent Requests</h1>
 
-    {%if Message%}
-    <div class="container">
-        <div class="alert alert-warning alert-dismissible fade show my-2" role="alert">
-            <strong>{{Message}}!!</strong>
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-pending-tab" data-toggle="tab" href="#nav-pending" role="tab" aria-controls="nav-pending" aria-selected="true">Pending 
+                <span class="badge badge-primary mx-2">{{no_of_pending_request}}</span>
+            </a>
+            <a class="nav-item nav-link" id="nav-accepted-tab" data-toggle="tab" href="#nav-accepted" role="tab" aria-controls="nav-accepted" aria-selected="false">Accepted</a>
+            <a class="nav-item nav-link" id="nav-decline-tab" data-toggle="tab" href="#nav-decline" role="tab" aria-controls="nav-decline" aria-selected="false">Declined</a>
+        </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+        <!-- Pending -->
+        <div class="tab-pane fade show active" id="nav-pending" role="tabpanel" aria-labelledby="nav-pending-tab">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Customer Email</th>
+                        <th scope="col">Vehicle</th>
+                        <th scope="col">Booking Date</th>
+                        <th scope="col">Return Date</th>
+                        <th scope="col">Number of Days</th>
+                        <th scope="col">Total Amount</th>
+                        <th scope="col">Request Response</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rv in rentvehicle %} {%if rv.request_status == "Pending"%}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{rv.customer_email}}</td>
+                        <td>{{rv.Vehicle_license_plate}}</td>
+                        <td>{{rv.RentVehicle_Date_of_Booking}}</td>
+                        <td>{{rv.RentVehicle_Date_of_Return}}</td>
+                        <td>{{rv.Total_days}}</td>
+                        <td>{{rv.RentVehicle_Total_amount}}</td>
+                        <td><a class="btn btn-success" href="/RentVehicle/AcceptRequest?id={{rv.id}}">Accept</a> <a class="btn btn-danger" href="/RentVehicle/DeclineRequest?id={{rv.id}}">Decline</a></td>
+                    </tr>
+                    {%endif%} {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- Accepted -->
+        <div class="tab-pane fade" id="nav-accepted" role="tabpanel" aria-labelledby="nav-accepted-tab">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Customer Email</th>
+                        <th scope="col">Vehicle</th>
+                        <th scope="col">Booking Date</th>
+                        <th scope="col">Return Date</th>
+                        <th scope="col">Number of Days</th>
+                        <th scope="col">Total Amount</th>
+                        <th scope="col">Accepted by</th>
+                        <th scope="col">Request Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rv in rentvehicle %} {%if rv.request_status == "Accepted"%}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{rv.customer_email}}</td>
+                        <td>{{rv.Vehicle_license_plate}}</td>
+                        <td>{{rv.RentVehicle_Date_of_Booking}}</td>
+                        <td>{{rv.RentVehicle_Date_of_Return}}</td>
+                        <td>{{rv.Total_days}}</td>
+                        <td>{{rv.RentVehicle_Total_amount}}</td>
+                        <td>{{rv.request_responded_by}}</td>
+                        <td style="color: green; font-weight: bolder;">{{rv.request_status}}</td>
+                    </tr>
+                    {%endif%} {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <!-- Declined -->
+        <div class="tab-pane fade" id="nav-decline" role="tabpanel" aria-labelledby="nav-decline-tab">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Customer Email</th>
+                        <th scope="col">Vehicle</th>
+                        <th scope="col">Booking Date</th>
+                        <th scope="col">Return Date</th>
+                        <th scope="col">Number of Days</th>
+                        <th scope="col">Total Amount</th>
+                        <th scope="col">Declined by</th>
+                        <th scope="col">Request Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for rv in rentvehicle %} {%if rv.request_status == "Declined"%}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{rv.customer_email}}</td>
+                        <td>{{rv.Vehicle_license_plate}}</td>
+                        <td>{{rv.RentVehicle_Date_of_Booking}}</td>
+                        <td>{{rv.RentVehicle_Date_of_Return}}</td>
+                        <td>{{rv.Total_days}}</td>
+                        <td>{{rv.RentVehicle_Total_amount}}</td>
+                        <td>{{rv.request_responded_by}}</td>
+                        <td style="color: red; font-weight: bolder;">{{rv.request_status}}</td>
+                    </tr>
+                    {%endif%} {% endfor %}
+                </tbody>
+            </table>
         </div>
     </div>
-    {%endif%}
-
-    <div class="container my-5 p-3 lead" id="signin">
-        <form action="/Owner/Vehicle/UploadVehicle" class="px-4 py-3" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="name">Vehicle Name</label>
-                <input type="text" class="form-control" id="name" name="Vehicle_name" placeholder="Q4" autocomplete="off" required>
-            </div>
-            <div class="form-group">
-                <label for="companyname">Company Name</label>
-                <input type="text" class="form-control" id="companyname" name="Vehicle_company" placeholder="Audi" autocomplete="off" required>
-            </div>
-            <div class="form-group">
-                <label for="model">Model</label>
-                <input type="text" class="form-control" id="model" name="Vehicle_model" placeholder="SUV" autocomplete="off" required>
-            </div>
-            <div class="form-group">
-                <label for="Vehicle_type">Vehicle Type</label>
-                <select class="form-control" id="Vehicle_type" name="Vehicle_type">
-                    <option value="Bicycle">Bicycle</option>
-                    <option value="Bike">Bike</option>
-                    <option value="Bus">Bus</option>
-                    <option value="Car">Car</option>
-                    <option value="Scooter">Scooter</option>
-                    <option value="Tourist Van">Tourist Van</option>
-                    <option value="Truck">Truck</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="Vehicle_license_plate">License Plate number</label>
-                <input type="text" class="form-control" name="Vehicle_license_plate" id="Vehicle_license_plate" placeholder="Mx-123" autocomplete="off" required>
-            </div>
-            <div class="form-group">
-                <label for="Vehicle_fuel">Type of Fuel</label>
-                <select class="form-control" id="Vehicle_fuel" name="Vehicle_fuel">
-                    <option value="Petrol">Petrol</option>
-                    <option value="Diesel">Diesel</option>
-                    <option value="CNG">CNG</option>
-                    <option value="Electric">Electric</option>
-                    <option value="No Fuel">No Fuel</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="Vehicle_No_of_Seats">Number of Seats</label>
-                <input type="number" class="form-control" name="Vehicle_No_of_Seats" id="Vehicle_No_of_Seats"min ="1" placeholder="0" autocomplete="off" required>
-            </div>
-            <label>Gear Type</label>
-            <div class="form-row">
-                <div class="form-check px-4">
-                    <input class="form-check-input" type="radio" name="isGeared" id="Manual" value="True" style="cursor: pointer;" checked>
-                    <label class="form-check-label" for="Manual">
-                        Manual
-                    </label>
-                </div>
-                <div class="form-check px-4">
-                    <input class="form-check-input" type="radio" name="isGeared" id="Auto" value="False" style="cursor: pointer;">
-                    <label class="form-check-label" for="Auto">
-                        Auto
-                    </label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="Vehicle_color">Vehicle Color</label>
-                <input type="text" class="form-control" name="Vehicle_color" id="Vehicle_color" placeholder="Red" autocomplete="off" required>
-            </div>
-            <div class="form-group">
-                <label for="Vehicle_description">Vehicle Description</label>
-                <textarea class="form-control" name="Vehicle_description" id="Vehicle_description" placeholder="Description" required></textarea>
-            </div>
-            <div class="form-group">
-                <label for="Vehicle_price">Price (per day in rupees)</label>
-                <input type="text" class="form-control" name="Vehicle_price" id="Vehicle_price" placeholder="2000" autocomplete="off" required>
-            </div>
-            <div class="form-group">
-                <label for="inputZip">Vehicle Image 1</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="Vehicle_image1" id="Vehicle_image1" style="cursor: pointer;" required>
-                    <label class="custom-file-label" for="Vehicle_image1">Choose First Image...</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputZip">Vehicle Image 2</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="Vehicle_image2" id="Vehicle_image2" style="cursor: pointer;" required>
-                    <label class="custom-file-label" for="Vehicle_image2">Choose Second Image...</label>
-                </div>
-            </div>
-            <div class="form-group">
-                <label for="inputZip">Vehicle Image 3</label>
-                <div class="custom-file">
-                    <input type="file" class="custom-file-input" name="Vehicle_image3" id="Vehicle_image3" style="cursor: pointer;" required>
-                    <label class="custom-file-label" for="Vehicle_image3">Choose Third Image...</label>
-                </div>
-            </div>
-            <input type="submit" value="Upload" class="btn btn-primary" />
-        </form>
-    </div>
-
     {% endblock pagecontent %}
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="row">
+          <div class="footer-col">
+            <h4>company</h4>
+            <ul>
+              <li><a href="#">about us</a></li>
+              <li><a href="#">our services</a></li>
+              <li><a href="#">privacy policy</a></li>
+              <li><a href="#">affiliate program</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>get help</h4>
+            <ul>
+              <li><a href="#">FAQ</a></li>
+              <li><a href="#">shipping</a></li>
+              <li><a href="#">returns</a></li>
+              <li><a href="#">order status</a></li>
+              <li><a href="#">payment options</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>HEHEHE</h4>
+            <ul>
+              <li><a href="#">Oshika</a></li>
+              <li><a href="#">Subham</a></li>
+              <li><a href="#">Another_Subham</a></li>
+              <li><a href="#">Rajal</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h4>follow us</h4>
+            <div class="social-links">
+              <a href="#"><i class="fab fa-facebook-f"></i></a>
+              <a href="#"><i class="fab fa-twitter"></i></a>
+              <a href="#"><i class="fab fa-instagram"></i></a>
+              <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </footer>
+
     <script src="/static/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript">
       var nav = document.querySelector("nav");
@@ -351,7 +393,5 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous "></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js " integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx " crossorigin="anonymous "></script>
     
-
-</body>
-
+  </body>
 </html>
