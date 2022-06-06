@@ -1,0 +1,76 @@
+{% load static %}
+{% block content %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>update profile</title>
+
+   <!-- custom css file link  -->
+   <link rel="stylesheet" href="{% static 'css/Edit.css' %}">
+   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+   <script src="edit.js" defer></script>
+<div class="update-profile">
+
+   <form action="/edit_profile/{{customer_data.id}}" method="post" enctype="multipart/form-data">
+      {%csrf_token%}
+      {% if status %}
+      <div class="alert-alert-primary">{{status}}</div>
+
+      {% endif %}
+      <img class="profile-pic" src="https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg">
+      <div class="p-image">
+         <i class="fa fa-camera upload-button"></i>
+          <input class="file-upload" type="file" accept="image/*"/>
+       </div>
+      <div class="flex">
+         <div class="inputBox">
+            <span>First Name:</span>
+            <input type="text" name="customer_firstname" value="{{customer_data.customer_firstname}}" placeholder="First Name" class="box">
+            <span>Your email :</span>
+            <input type="email" name="customer_email"  value="{{customer_data.customer_email}}"  placeholder="Email" class="box">
+            <span>Phone Number :</span>
+            <input type="text" value="{{customer_data.customer_mobileno}}" name="customer_mobileno" placeholder="Phone number" class="box">
+            <span>Update your license pic :</span>
+            <input type="file" name="customer_license"  value="{{customer_data.customer_license}}" accept="image/jpg, image/jpeg, image/png" class="box">
+            <span>City :</span>
+            <input type="text" name="customer_city" value="{{customer_data.customer_city}}" placeholder="city" class="box">
+            <span>State :</span>
+            <input type="text" name="customer_state"  value="{{customer_data.customer_state}}" placeholder="State" class="box">
+         </div>
+         <div class="inputBox">
+
+            <span>Last Name:</span>
+            <input type="text" name="customer_lastname"  value="{{customer_data.customer_lastname}}" placeholder="Last Name" class="box">
+
+            <span>Old password :</span>
+            <input type="password" name="customer_password"   value="{{customer_data.customer_password}}"placeholder="Enter new password" class="box">
+            <span>Date Of Birth :</span>
+            <input type="date" name="customer_dob"  value="{{customer_data.customer_dob}}" placeholder="Enter New DOB" class="box">
+            <span>Your address :</span>
+            <input type="text" name="customer_address"  value="{{customer_data.customer_address}}" placeholder="Enter New Address" class="box">
+            <span>Country :</span>
+            <input type="text" name="customer_country"  value="{{customer_data.customer_country}}" placeholder="Country" class="box">
+            <span>Zipcode :</span>
+            <input type="text" name="customer_pincode"  value="{{customer_data.customer_pincode}}" placeholder="Zipcode" class="box">
+            <span>Gender :</span>
+            <input type="text" name="customer_gender"  value="{{customer_data.customer_gender}}" placeholder="Gender" class="box">
+            
+         </div>
+      </div>
+      <input type="submit" value="Update profile" class="btn">
+      <a href="#" class="delete-btn">Go back</a>
+   </form>
+
+</div>
+
+</body>
+</html>
+
+{% endblock %}
