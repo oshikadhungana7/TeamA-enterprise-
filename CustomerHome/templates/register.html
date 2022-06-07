@@ -12,8 +12,10 @@
 }
 
 body{
-	background: #84889c;
+	
+    background-image:url("{% static 'img/wave.png' %}") ;
 }
+
  
 .wrapper{
 	min-height: 100vh;
@@ -23,10 +25,11 @@ body{
 }
 
 .registration_form{
-	background: #545871;
+	background:hsla(hue, saturation, lightness, alpha);
 	padding: 25px;
 	border-radius: 5px;
 	width: 400px;
+    
 }
 
 .registration_form .title{
@@ -137,7 +140,7 @@ body{
     <title>registration</title>
     
 
-    <script src="{% static 'js/script.js' %}" defer></script>
+    <script src="{% static 'js/main.js' %}" defer></script>
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
@@ -149,7 +152,12 @@ body{
 </head>
 <body>
     {%if Message%}
+    
     <div class="container">
+        <div class="container">
+            <div class="img">
+              
+            </div> 
         <div class="alert alert-warning alert-dismissible fade show my-2" role="alert">
             <strong>{{Message}}!!</strong>
             <button type="button" class="close" data-dismiss="alert" aria-label="Close">

@@ -7,7 +7,7 @@ from vehicle import views as veh_views
 
 urlpatterns = [
     path('', views.index, name="Manager"),
-    path('signin/',cust_views.signin, name="SignIn"),
+    path('signin/',cust_views.signin, name="MgrSignIn"),
     path('Logout/',cust_views.Logout, name="Logout"),
     path('Profile/',views.Profile, name="Profile"),
     path('AllCustomers/',views.AllCustomers, name="AllCustomers"),

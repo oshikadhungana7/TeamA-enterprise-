@@ -1,4 +1,5 @@
 {% load static %}
+{% block content %}
 <!doctype html>
 <html lang="en">
 
@@ -32,6 +33,7 @@
       body {
         line-height: 1.5;
         font-family: "Poppins", sans-serif;
+        background-image:url("{% static 'img/wave.png' %}") ;
       }
       * {
         margin: 0;
@@ -171,7 +173,7 @@
             <!-- Information -->
             <div class="col-sm-8" >
                 <div class="card p-2" style="width: auto;">
-                    <div class="card-body"style="border:2px solid black ;">
+                    <div class="card-body">
                         <div class="row">
                             <div class="col-sm-3">
                                 <h6 class="mb-0">First Name</h6>
@@ -273,7 +275,7 @@
                         <hr>
                     </div>
                     <div class="center">
-                        <a class="btn btn-primary" href="/edit_profile/{{customer.id}}">Edit Profile</a>
+                        <a class="btn btn-primary" href="">Edit Profile</a>
                     </div>
                     
                    
@@ -287,3 +289,4 @@
 </body>
 
 </html>
+{%endblock%}

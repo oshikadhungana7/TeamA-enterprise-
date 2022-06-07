@@ -216,6 +216,27 @@
     class="banner-image w-100 vh-100 d-flex justify-content-center align-items-center"
     ></div>
 
+    {{customer.customer_firstname}} {% block pagecontent %} {%if Message%}
+    <div class="container mt-5">
+        <div class="alert alert-warning" role="alert">
+            <h4 class="alert-heading">NOT RENTED ANY YET!!</h4>
+            <p>You haven't made any rent request yet</p>
+            <hr>
+            <p class="mb-0">We have every type of vehicles you need within your budget. Nice, Neat and tidy. Go and get one.
+                <a href="/">Click here</a>
+            </p>
+        </div>
+    </div>
+    {%else%}
+    <h1 class="display-3" style="text-align: center;">Sent Requests</h1>
+    <nav>
+        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+            <a class="nav-item nav-link active" id="nav-all-tab" data-toggle="tab" href="#nav-all" role="tab" aria-controls="nav-all" aria-selected="true">All</a>
+            <a class="nav-item nav-link" id="nav-pending-tab" data-toggle="tab" href="#nav-pending" role="tab" aria-controls="nav-pending" aria-selected="false">Pending</a>
+            <a class="nav-item nav-link" id="nav-accepted-tab" data-toggle="tab" href="#nav-accepted" role="tab" aria-controls="nav-accepted" aria-selected="false">Accepted</a>
+            <a class="nav-item nav-link" id="nav-declined-tab" data-toggle="tab" href="#nav-declined" role="tab" aria-controls="nav-declined" aria-selected="false">Declined</a>
+        </div>
+    </nav>
     <div class="tab-content" id="nav-tabContent">
         <!-- All -->
         <div class="tab-pane fade show active" id="nav-all" role="tabpanel" aria-labelledby="nav-all-tab">
@@ -366,6 +387,8 @@
             </table>
         </div>
     </div>
+    {%endif%} {% endblock pagecontent %}
+</body>
    
 <footer class="footer">
     <div class="container">

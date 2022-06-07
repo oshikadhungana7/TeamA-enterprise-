@@ -1,17 +1,20 @@
 
+from turtle import update
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 
 from CustomerHome.models import Customer
 from Owner.models import Owner
-from Manager.models import Manager
+
 from vehicle.models import Vehicle
 from RentVehicle.models import RentVehicle
 import json
 from .forms import Customer_data
 from datetime import datetime
 from datetime import date
+from django.contrib.auth.forms import UserCreationForm
 
+from django.contrib.auth.decorators import login_required
 
 isLogin = False
 isLogout = False
@@ -27,7 +30,7 @@ def index(request):
 
         result_customer = Customer.objects.filter(customer_email=email)
         result_owner = Owner.objects.filter(Owner_email=email)
-        result_manager = Manager.objects.filter(Manager_email=email)
+      
 
         if result_customer.exists():
             request.session['user_email'] = email
@@ -37,11 +40,7 @@ def index(request):
             request.session['user_email'] = email
             isLogin = True
             return redirect('/Owner/')
-        elif result_manager.exists():
-            request.session['user_email'] = email
-            isLogin = True
-            return redirect('/Manager/')
-        return redirect('/Home/')
+    
 
     vehicle = Vehicle.objects.all()
     if('user_email' not in request.session and isLogout):
@@ -65,7 +64,7 @@ def LoginAuthentication(request):
 
     result_customer = Customer.objects.filter(customer_email=login_email,customer_password=login_password)
     result_owner = Owner.objects.filter(Owner_email=login_email,Owner_password=login_password)
-    result_manager = Manager.objects.filter(Manager_email=login_email,Manager_password=login_password)
+ 
 
     if result_customer.exists():
         request.session['user_email'] = login_email
@@ -75,10 +74,7 @@ def LoginAuthentication(request):
         request.session['user_email'] = login_email
         isLogin = True
         return redirect('/Owner/')
-    elif result_manager.exists():
-        request.session['user_email'] = login_email
-        isLogin = True
-        return redirect('/Manager/')
+  
     else:
         Message = "Invalid Email or password!!"
         return render(request,'SignIn.html',{'Message':Message})
@@ -102,9 +98,9 @@ def RegisterCustomer(request):
 
     result_customer = Customer.objects.filter(customer_email=customer_email)
     result_owner = Owner.objects.filter(Owner_email=customer_email)
-    result_manager = Manager.objects.filter(Manager_email=customer_email)
+  
 
-    if result_customer.exists() or result_owner.exists() or result_manager.exists():
+    if result_customer.exists() or result_owner.exists() :
         Message = "This Email address already exist!!"
         return render(request,'register.html',{'Message':Message})
     else:
@@ -214,22 +210,19 @@ def SentRequests(request):
     else:
         Message = "You haven't rented any vehicle yet!!"
         return render(request,'SentRequests.html',{'customer':customer,'rentvehicle':rentvehicle,'Message':Message})
-
+@login_required
 def edit_profile(request,customer_id):
+    if request.method == 'POST':
+        p_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
+        u_form = UserUpdateForm(request.POST,instance=request.user)
+        if p_form.is_valid() and u_form.is_valid():
+            u_form.save()
+            p_form.save()
+            print('Your Profile has been updated!')
+            return render(request,"edit_profile.html", )
+    else:
+        p_form = ProfileUpdateForm(instance=request.user)
+        u_form = UserUpdateForm(instance=request.user.profile)
 
-    update = Customer.objects.get(id = customer_id)
-    customer_data = Customer.objects.get(id = customer_id)
-
-    if(request.method == "POST"):
-        form = Customer_data(request.POST, request.FILES, instance=update)
-        print("IsForm...................")
-        if (form.is_valid()):
-            form.save()
-            print('Successfully Updated')
-            return render(request,"edit_profile.html", {'customer_data' : customer_data})
-    
-
-    
-    print('not done')
-   
-    return render(request,"edit_profile.html", {'customer_data' : customer_data})
+    context={'p_form': p_form, 'u_form': u_form}
+    return render(request, 'edit_profile.html',context )

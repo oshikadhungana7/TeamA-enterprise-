@@ -64,7 +64,11 @@
             
          </div>
       </div>
-      <input type="submit" value="Update profile" class="btn">
+      <form method="post">
+         {% csrf_token %}
+     {{ user_form }}
+     {{ form }}
+     <button type="submit" class="btn btn-primary">Submit</button>
       <a href="#" class="delete-btn">Go back</a>
    </form>
 

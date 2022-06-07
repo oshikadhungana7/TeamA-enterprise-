@@ -2,7 +2,7 @@ from django.db import models
 from vehicle.models import Vehicle
 from CustomerHome.models import Customer
 from Owner.models import Owner
-from Manager.models import Manager
+
 
 # Create your models here.
 class RentVehicle(models.Model):

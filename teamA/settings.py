@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'CustomerHome',
     'Manager',
+
     'Owner',
     'vehicle',
     'RentVehicle'

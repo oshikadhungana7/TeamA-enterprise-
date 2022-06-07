@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Customer(models.Model):
@@ -17,5 +18,6 @@ class Customer(models.Model):
     customer_country = models.CharField(max_length=30)
     customer_pincode = models.IntegerField()
 
-    def __str__(self):
+
+def __str__(self):
         return self.customer_email + ": " + str(self.customer_license)

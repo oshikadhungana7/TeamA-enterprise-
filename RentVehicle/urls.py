@@ -9,5 +9,5 @@ urlpatterns = [
     path('DeclineRequest/',views.DeclineRequest,name="DeclineRequest"),
     path('CancelRequest/',views.CancelRequest,name="CancelRequest"),
     path('Owner/',include("Owner.urls")),
-    path('Manager/',include("Manager.urls"))
+  
 ]

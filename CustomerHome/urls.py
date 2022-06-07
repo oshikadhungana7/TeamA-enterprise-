@@ -12,7 +12,6 @@ urlpatterns = [
     path('Logout/',views.Logout,name="Logout"),    
     path('register/',views.register,name="Register"),
     path('Profile/',views.Profile,name="Profile"),
-    path('edit_profile/<int:customer_id>',views.edit_profile,name="edit_profile"),
    
     path('LoginAuthentication/',views.LoginAuthentication,name="LoginAuthentication"),
     path('RegisterCustomer/',views.RegisterCustomer,name="RegisterCustomer"),
@@ -21,7 +20,7 @@ urlpatterns = [
     path('SentRequests/',views.SentRequests,name="SentRequests"),
     path('RentVehicle',include("RentVehicle.urls")),
     path('Owner/',include("Owner.urls")),
-    path('Manager/',include("Manager.urls"))
+  
 ]
 
 if settings.DEBUG:

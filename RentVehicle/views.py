@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from CustomerHome.models import Customer
 from RentVehicle.models import RentVehicle
 from Owner.models import Owner
-from Manager.models import Manager
+
 
 from datetime import datetime
 
