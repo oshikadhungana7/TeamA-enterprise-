@@ -105,7 +105,7 @@ def RegisterCustomer(request):
     result_manager = Manager.objects.filter(Manager_email=customer_email)
 
     if result_customer.exists() or result_owner.exists() or result_manager.exists():
-        Message = "This Email address already exist!!"
+        Message = "This Email address already exists!!"
         return render(request,'register.html',{'Message':Message})
     else:
         customer=Customer(customer_firstname=customer_firstname,customer_lastname=customer_lastname,
