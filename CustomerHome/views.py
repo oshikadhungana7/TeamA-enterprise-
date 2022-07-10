@@ -210,19 +210,5 @@ def SentRequests(request):
     else:
         Message = "You haven't rented any vehicle yet!!"
         return render(request,'SentRequests.html',{'customer':customer,'rentvehicle':rentvehicle,'Message':Message})
-@login_required
-def edit_profile(request,customer_id):
-    if request.method == 'POST':
-        p_form = ProfileUpdateForm(request.POST,request.FILES,instance=request.user.profile)
-        u_form = UserUpdateForm(request.POST,instance=request.user)
-        if p_form.is_valid() and u_form.is_valid():
-            u_form.save()
-            p_form.save()
-            print('Your Profile has been updated!')
-            return render(request,"edit_profile.html", )
-    else:
-        p_form = ProfileUpdateForm(instance=request.user)
-        u_form = UserUpdateForm(instance=request.user.profile)
 
-    context={'p_form': p_form, 'u_form': u_form}
-    return render(request, 'edit_profile.html',context )
+

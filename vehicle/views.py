@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from vehicle.models import Vehicle
 from Owner.models import Owner
-
 from django.shortcuts import get_object_or_404
 
 # Create your views here.

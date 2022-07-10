@@ -1,51 +1,62 @@
 {% load static %}
 {% block content %}
-
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="en">
   <head>
-    <meta charset="utf-8">
-    <title>Service owner login</title>
-    <link rel="stylesheet" href="{% static 'css/SignIn.css' %}">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login</title>
+
+    <!-- font awesome cdn link  -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+
+    <!-- custom css file link  -->
+    <!-- <link rel="stylesheet" href="{% static 'css/style.css' %}" /> -->
+    <link rel="stylesheet" href="{%static 'css/login.css' %}">
+    <!-- custom js file link  -->
+    <script src="{% static 'js/script.js' %}" defer></script>
   </head>
   <body>
-    <div class="center">
-      <h1>Login</h1>
+    <!-- header section starts  -->
+
+    <header class="header">
+      <a href="index.html" class="logo"> # </a>
+    </header>
+
+    <!-- header section ends -->
+
+    <!-- login form section starts -->
+
+    <section class="login-form">
       <form action="/LoginAuthentication/" class="px-4 py-3" method="POST">
         {%csrf_token%}
-        <div class="txt_field">
-          <label for="exampleDropdownFormEmail1">Email</label>
-          <br></br>
-          <br>
-          
-          <input type="email" name="login_email" id="exampleDropdownFormEmail1" autocomplete = "off" required>
-          
-          
+        <div class="form-group">
+            <label for="exampleDropdownFormEmail1"><b>Email address</b></label>
+            <input type="email" class="form-control" name="login_email" id="exampleDropdownFormEmail1" placeholder="email@example.com" autocomplete="off" required style="width: 450px ;">
         </div>
-        <div class="txt_field">
-          <label for="exampleDropdownFormPassword1">Password</label>
-          <br></br>
-          <br>
-          <input type="password" name="login_password" id="exampleDropdownFormPassword1" autocomplete = "off" required>
-          
-          
+        <div class="form-group">
+            <label for="exampleDropdownFormPassword1"><b>Password</b></label>
+            <input type="password" class="form-control" name="login_password" id="exampleDropdownFormPassword1" placeholder="Password" required style="width: 450px;">
         </div>
-        <div class="pass">Forgot Password?</div>
         <input type="submit" class="btn btn-primary" value="Login" name="Login" />
-      
-    
-      
-       <!-- <input type="submit" value="sign in" class="btn" /> -->
-       <div class="flex">
-       </div>
-       <div class="signup_link">
-        <b> <p>Don't have an account?</p></b>
-        <a href="{% url 'Register' %}" class="btn">create an account</a>
-       </div>
-      
-      </form>
-    </div>
+    </form>
+    </section>
 
+    <!-- login form section ends -->
+
+    <!-- footer section starts  -->
+
+    <!-- <section class="footer">
+      <div class="credit">
+        created by <span>Team A</span> | all rights reserved
+      </div>
+    </section> -->
+
+    <!-- footer section ends -->
   </body>
 </html>
 {% endblock %}
