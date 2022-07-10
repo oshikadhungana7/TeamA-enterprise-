@@ -1,184 +1,292 @@
-<!DOCTYPE html>
+{% load static %}
+{% block content %}
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bootstrap 5 - Transparent Navbar</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <!-- <link rel="stylesheet" href="{% static 'css/userprofile.css' %}"> -->
+    <!-- <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style2.css' %}"> -->
+    <link
+      rel="stylesheet"
+      type="text/css"
+      
+      
 
-    <!-- ===== ===== Custom Css ===== ===== -->
-    <link rel="stylesheet" href="/CustomerHome/static/css/userprofile.css">
-    <link rel="stylesheet" href="/CustomerHome/static/css/responsive.css">
+      
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
 
-    <!-- ===== ===== Remix Font Icons Cdn ===== ===== -->
-    <link rel="stylesheet" href="fonts/remixicon.css">
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Grape+Nuts&family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+      body {
+        line-height: 1.5;
+        font-family: "Poppins", sans-serif;
+        background-image:url("{% static 'img/wave.png' %}") ;
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        max-width: 1170px;
+        margin: auto;
+      }
+      .row {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      ul {
+        list-style: none;
+      }
+      .footer {
+        background-color: #24262b;
+        padding: 70px 0;
+      }
+      .footer-col {
+        width: 25%;
+        padding: 0 15px;
+      }
+      .footer-col h4 {
+        font-size: 18px;
+        color: #ffffff;
+        text-transform: capitalize;
+        margin-bottom: 35px;
+        font-weight: 500;
+        position: relative;
+      }
+      .footer-col h4::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        bottom: -10px;
+        background-color: #e91e63;
+        height: 2px;
+        box-sizing: border-box;
+        width: 50px;
+      }
+      .footer-col ul li:not(:last-child) {
+        margin-bottom: 10px;
+      }
+      .footer-col ul li a {
+        font-size: 16px;
+        text-transform: capitalize;
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 300;
+        color: #bbbbbb;
+        display: block;
+        transition: all 0.3s ease;
+      }
+      .footer-col ul li a:hover {
+        color: #ffffff;
+        padding-left: 8px;
+      }
+      .footer-col .social-links a {
+        display: inline-block;
+        height: 40px;
+        width: 40px;
+        background-color: rgba(255, 255, 255, 0.2);
+        margin: 0 10px 10px 0;
+        text-align: center;
+        line-height: 40px;
+        border-radius: 50%;
+        color: #ffffff;
+        transition: all 0.5s ease;
+      }
+      .footer-col .social-links a:hover {
+        color: #24262b;
+        background-color: #ffffff;
+      }
+
+      /*responsive*/
+      @media (max-width: 767px) {
+        .footer-col {
+          width: 50%;
+          margin-bottom: 30px;
+        }
+      }
+      @media (max-width: 574px) {
+        .footer-col {
+          width: 100%;
+        }
+      }
+
+      .html {
+        font-family: "Courier New", Courier, monospace;
+      }
+      .banner-image {
+        background-image: url("{% static 'img/bg_image.jpg' %}");
+        background-size: cover;
+      }
+      a.navbar-brand {
+        padding: 0px;
+        font-size: 40px;
+        font-family: "Grape Nuts", cursive;
+      }
+      a.nav-link {
+        font-size: 1.2rem;
+      }
+      li.nav-item {
+        margin-right: 20px;
+      }
+      .center{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 10px;
+      }
+      
+    </style>
+  </head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Profile {% endblock %}</title>
 </head>
 
 <body>
-    <!-- ===== ===== Body Main-Background ===== ===== -->
-    <span class="main_bg"></span>
+    {{customer.customer_firstname}}
 
-
-    <!-- ===== ===== Main-Container ===== ===== -->
-    <div class="container">
-
-        <!-- ===== ===== Header/Navbar ===== ===== -->
-        <header>
-            <div class="brandLogo">
-                <figure><img src="/CustomerHome/static/img/logo.JPG" alt="logo" width="40px" height="40px"></figure>
-                <span>Car Khaani</span>
-            </div>
-        </header>
-
-
-        <!-- ===== ===== User Main-Profile ===== ===== -->
-        <section class="userProfile card">
-            <div class="profile">
-                <figure><img src="/CustomerHome/static/img/seventh photo.JPG" alt="profile" width="250px" height="250px"></figure>
-            </div>
-        </section>
-
-
-        <!-- ===== ===== Work & Skills Section ===== ===== -->
-        <section class="work_skills card">
-
-            <!-- ===== ===== Work Contaienr ===== ===== -->
-            <div class="About">
-                
-                <div class="primary">
-                    <h1>Bio</h1>
-                    <p>Make yourself happy.</p>
-                        
+    <div class="container my-5">
+        <div class="row">
+            <!-- License Image -->
+            <div class="col-sm-4">
+                <div class="card p-2" style="width: auto ;">
+                    <img class="card-img-top" src="{{customer.customer_license.url}}" alt="Your License"style="border:2px solid black ;">
+                    <div class="card-body">
+                        <h6 class="card-title">License</h6>
+                    </div>
                 </div>
-
-                
-
-            <!-- ===== ===== Skills Contaienr ===== ===== -->
-            <div class="skills">
-                <h1 class="heading">Skills</h1>
-                <ul>
-                    <li style="--i:0">Android</li>
-                    <li style="--i:1">Web-Design</li>
-                    <li style="--i:2">UI/UX</li>
-                    <li style="--i:3">Video Editing</li>
-                </ul>
-            </div>
-        </section>
-
-
-        <!-- ===== ===== User Details Sections ===== ===== -->
-        <section class="userDetails card">
-            <div class="userName">
-                <h1 class="name">Oshika</h1>
-                <div class="map">
-                    <i class="ri-map-pin-fill ri"></i>
-                    <span>Kathmandu Ratopul</span>
-                </div>
-                <p>User profile</p>
             </div>
 
-            
-            <div class="btns">
-                <ul>
-                    
-
-                    <li class="sendMsg active">
-                        <i class="ri-check-fill ri"></i>
-                        <a href="#">Contacts</a>
-                    </li>
-
-                    
-                </ul>
-            </div>
-        </section>
-
-
-        <!-- ===== ===== Timeline & About Sections ===== ===== -->
-        <section class="timeline_about card">
-            <div class="tabs">
-                <ul>
-                    
-
-                    <li class="about active">
-                        <i class="ri-user-3-fill ri"></i>
-                        <span>About</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="contact_Info">
-                <h1 class="heading">User Information</h1>
-                <ul>
-                    <li class="firstname">
-                        <h1 class="label">First name:</h1>
-                        <span class="info">sita</span>
-                    </li>
-                    <li class="lastname">
-                        <h1 class="label">Last name:</h1>
-                        <span class="info">shrestha</span>
-                    </li>
-                    <li class="phone">
-                        <h1 class="label">Phone:</h1>
-                        <span class="info">+11 234 567 890</span>
-                    </li>
-                    <li class="city">
-                        <h1 class="label">city:</h1>
-                        <span class="info">+11 234 567 890</span>
-                    </li>
-                    <li class="state">
-                        <h1 class="label">state:</h1>
-                        <span class="info">+11 234 567 890</span>
-                    </li>
-                    <li class="zipcode">
-                        <h1 class="label">zip code:</h1>
-                        <span class="info">1149</span>
-                    </li>
-
-                    <li class="address">
-                        <h1 class="label">Address:</h1>
-                        <span class="info">S34 E 65th Street <br> New York, NY 10651-78 156-187-60</span>
-                    </li>
-                    <li class="license">
-                        <h1 class="label">license:</h1>
-                    <div class="form-group">
-                        <label for="inputZip">Upload License</label>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" name="customer_license" id="license" style="cursor: pointer;" required>
-                            <label class="custom-file-label" for="license">Choose file...</label>
+            <!-- Information -->
+            <div class="col-sm-8" >
+                <div class="card p-2" style="width: auto;">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">First Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{customer.customer_firstname}}
+                            </div>
                         </div>
-
-                    <li class="email">
-                        <h1 class="label">E-mail:</h1>
-                        <span class="info">hello@carkhani.com</span>
-                    </li>
-
-                    <li class="site">
-                        <h1 class="label">Site:</h1>
-                        <span class="info">www.carkhani.com</span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="basic_info">
-                <h1 class="heading">Basic Information</h1>
-                <ul>
-                    <li class="birthday">
-                        <h1 class="label">Birthday:</h1>
-                        <span class="info">Dec 25, 2000</span>
-                    </li>
-
-                    <li class="sex">
-                        <h1 class="label">Gender:</h1>
-                        <span class="info">female</span>
-                    </li>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Last Name</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{customer.customer_lastname}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Email</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{customer.customer_email}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Date of Birth</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{customer.customer_dob}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Gender</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{customer.customer_gender}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Mobile Number</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{customer.customer_mobileno}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Address</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{customer.customer_address}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">City</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{customer.customer_city}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">State</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{customer.customer_state}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Country</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{customer.customer_country}}
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-sm-3">
+                                <h6 class="mb-0">Pincode</h6>
+                            </div>
+                            <div class="col-sm-9 text-secondary">
+                                {{customer.customer_pincode}}
+                            </div>
+                        </div>
+                        <hr>
+                    </div>
+                    <div class="center">
+                        <a class="btn btn-primary" href="">Edit Profile</a>
+                    </div>
                     
-                    
-                </ul>
+                   
+                </div>
             </div>
-        </section>
+            <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js " integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj " crossorigin="anonymous "></script>
+            <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js " integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx " crossorigin="anonymous "></script>
+        </div>
     </div>
-
+   
 </body>
 
 </html>
+{%endblock%}
